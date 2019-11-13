@@ -15,8 +15,6 @@
 其次,当用户按键盘,就通过`event`获取用户的操作,然后进行判断,2048小游戏使用的是类似于回合制的机制,不同于一些实时更新的游戏,这种更简单一些.
 
 
-
-
 ## 正文
 
 ### 一.目标
@@ -26,11 +24,7 @@
 - 不会出现一个操作同行多格都发生变化：如一行：`2 2 4 8` ，向左操作直接变成 `16 0 0 0`
 
 
-### 二.项目截图
-
-![](../../../../img/in-post/2019-11-13/a.png)
-
-### 三.实现步骤
+### 二.实现步骤
 
 #### 1.初始界面的实现
 - **实现header块,包含标题,newgame按钮,分数面板**
@@ -517,21 +511,3 @@ function init() {
 
 在每个`moveXXX()`方法中,当将要发生数值叠加,判断将要移向的这个空格是否已经发生过碰撞,并且当完成碰撞后,将对应的空格`hasConflicted`为true:
 ```js
-else if(board[i][k]==board[i][j] && noBlockHorizontal(i,k,j,board) && !hasConflicted[i][k]){
-                        showMoveAnimation(i,j,i,k);
-                        board[i][k]*=2;
-                        board[i][j]=0;
-
-                        score+=board[i][k];
-                        updateScore(score);
-
-                        hasConflicted[i][k]=true;
-                        continue;
-                    }
-```
-记得在`updateBoardView()`中将`hasConflicted`重置,不然下次移动会出现错误.
-
-
-
-
-[1]:https://www.imooc.com/learn/76
