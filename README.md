@@ -511,3 +511,16 @@ function init() {
 
 在每个`moveXXX()`方法中,当将要发生数值叠加,判断将要移向的这个空格是否已经发生过碰撞,并且当完成碰撞后,将对应的空格`hasConflicted`为true:
 ```js
+else if(board[i][k]==board[i][j] && noBlockHorizontal(i,k,j,board) && !hasConflicted[i][k]){
+                        showMoveAnimation(i,j,i,k);
+                        board[i][k]*=2;
+                        board[i][j]=0;
+
+                        score+=board[i][k];
+                        updateScore(score);
+
+                        hasConflicted[i][k]=true;
+                        continue;
+                    }
+```
+记得在`updateBoardView()`中将`hasConflicted`重置,不然下次移动会出现错误.
